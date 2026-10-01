@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WalkRoute</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="intro">
+      <p class="eyebrow">Walking-aware navigation</p>
+      <h1>Choose your route,<br><em>keep your feet in mind.</em></h1>
+      <p class="lede">A small multimodal network routed with A* while treating walking as a hard, user-controlled requirement.</p>
+      <div class="algorithm-note">
+        <span class="algorithm-mark">A*</span>
+        <span>Every search state remembers both the location and walking already used.</span>
+      </div>
+    </section>
+
+    <section class="workspace" aria-label="Route planner">
+      <form id="route-form" class="planner-card">
+        <div class="card-heading">
+          <div>
+            <p class="eyebrow">Plan a trip</p>
+            <h2>Where are you going?</h2>
+          </div>
+          <span class="live-dot" aria-hidden="true"></span>
+        </div>
+
+        <label for="from-search">From</label>
+        <div id="from-picker" class="location-picker">
+          <input id="from-search" class="location-input" type="search" autocomplete="off" placeholder="Search locations..." role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="from-options" disabled>
+          <input id="from" type="hidden" name="from">
+          <div id="from-options" class="location-options" role="listbox"></div>
+        </div>
+
+        <label for="to-search">To</label>
+        <div id="to-picker" class="location-picker">
+          <input id="to-search" class="location-input" type="search" autocomplete="off" placeholder="Search locations..." role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="to-options" disabled>
+          <input id="to" type="hidden" name="to">
+          <div id="to-options" class="location-options" role="listbox"></div>
+        </div>
+
+        <div class="range-heading">
+          <label for="walking-minimum">Minimum walking</label>
+          <output id="walking-value" for="walking-minimum">10 minutes</output>
+        </div>
+        <input id="walking-minimum" name="minWalkingMinutes" type="range" min="0" max="30" step="1" value="10">
+        <div class="range-labels"><span>0 min</span><span>30 min</span></div>
+        <p class="planning-note">The selected route must include at least this much walking.</p>
+
+        <button id="find-route" type="submit" disabled><span id="find-route-label">Find route</span> <span aria-hidden="true">-&gt;</span></button>
+        <p id="form-message" class="form-message" role="alert"></p>
+      </form>
+
+      <section class="results-panel" aria-live="polite">
+        <div class="results-heading">
+          <div>
+            <p class="eyebrow">Your route</p>
+            <h2 id="route-title">Ready when you are</h2>
+          </div>
+        </div>
+
+        <div id="route-content" class="empty-state">
+          <div class="empty-glyph">~</div>
+          <p>Choose your locations and search across the UTS area.</p>
+        </div>
+      </section>
+    </section>
+
+    <footer>
+      <span>WalkRoute / Sydney demo network</span>
+      <span>Go + A* + a little patience</span>
+    </footer>
+  </main>
+  <script src="/app.js" defer></script>
+</body>
+</html>

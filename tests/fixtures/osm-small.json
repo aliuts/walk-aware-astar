@@ -1,0 +1,9 @@
+{
+  "elements": [
+    {"type":"node","id":1001,"lat":-33.88,"lon":151.20},
+    {"type":"node","id":1002,"lat":-33.88,"lon":151.201},
+    {"type":"node","id":1003,"lat":-33.881,"lon":151.201},
+    {"type":"node","id":1004,"lat":-33.88,"lon":151.2002,"tags":{"name":"Sydney Central"}},
+    {"type":"way","id":2001,"nodes":[1001,1002,1003],"tags":{"highway":"footway","name":"Test Walk"}}
+  ]
+}
